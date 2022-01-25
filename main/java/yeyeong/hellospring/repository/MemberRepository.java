@@ -1,5 +1,6 @@
 package yeyeong.hellospring.repository;
 
+import org.springframework.stereotype.Repository;
 import yeyeong.hellospring.domain.Member;
 
 import java.util.List;

@@ -9,16 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 public class JdbcMemberRepository implements MemberRepository {
+
     private final DataSource dataSource;
+
     public JdbcMemberRepository(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
     @Override
     public Member save(Member member) {
         String sql = "insert into member(name) values(?)";
+
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+
         try {
             conn = getConnection(); // 결과 가져오기
             pstmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -72,6 +77,7 @@ public class JdbcMemberRepository implements MemberRepository {
     @Override
     public List<Member> findAll() {
         String sql = "select * from member";
+
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -98,9 +104,11 @@ public class JdbcMemberRepository implements MemberRepository {
     @Override
     public Optional<Member> findByName(String name) {
         String sql = "select * from member where name = ?";
+
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
+
         try {
             conn = getConnection();
             pstmt = conn.prepareStatement(sql);

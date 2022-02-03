@@ -15,13 +15,14 @@ public class MemberController {
 
     private MemberService memberService;
 
+    // 생성자 주입
     @Autowired // 스프링이 13번째줄 멤버 서비스를 연결시켜줌
     public MemberController(MemberService memberService) { // 인식못함(순수한 자바 클래스)
         this.memberService = memberService;
     }
 
     @GetMapping("/members/new")
-    public String crateForm(){
+    public String createForm(){
         return "members/createMemberForm";
     }
 
